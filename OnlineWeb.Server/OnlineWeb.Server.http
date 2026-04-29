@@ -1,0 +1,8 @@
+# @OnlineWeb.Server_HostAddress = http://localhost:5228
+
+# GET {{OnlineWeb.Server_HostAddress}}/weatherforecast/
+# Accept: application/json
+
+# ### THIS IS FOR TESTING API AND JSON FOR FRONTEND 
+
+

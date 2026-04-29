@@ -1,0 +1,155 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|c:\\users\\qirox\\source\\repos2\\onlineweb\\onlineweb.server\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|solutionrelative:onlineweb.server\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|c:\\users\\qirox\\source\\repos2\\onlineweb\\onlineweb.server\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|solutionrelative:onlineweb.server\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|c:\\users\\qirox\\source\\repos2\\onlineweb\\onlineweb.server\\models\\adress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|solutionrelative:onlineweb.server\\models\\adress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|c:\\users\\qirox\\source\\repos2\\onlineweb\\onlineweb.server\\migrations\\20260429181833_addordersanditems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|solutionrelative:onlineweb.server\\migrations\\20260429181833_addordersanditems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|c:\\users\\qirox\\source\\repos2\\onlineweb\\onlineweb.server\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|solutionrelative:onlineweb.server\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|c:\\users\\qirox\\source\\repos2\\onlineweb\\onlineweb.server\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|solutionrelative:onlineweb.server\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|c:\\users\\qirox\\source\\repos2\\onlineweb\\onlineweb.server\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{662D52DB-33CE-EEA9-8EE1-87B71320D5A6}|OnlineWeb.Server\\OnlineWeb.Server.csproj|solutionrelative:onlineweb.server\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20260429181833_AddOrdersAndItems.cs",
+              "DocumentMoniker": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Migrations\\20260429181833_AddOrdersAndItems.cs",
+              "RelativeDocumentMoniker": "OnlineWeb.Server\\Migrations\\20260429181833_AddOrdersAndItems.cs",
+              "ToolTip": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Migrations\\20260429181833_AddOrdersAndItems.cs",
+              "RelativeToolTip": "OnlineWeb.Server\\Migrations\\20260429181833_AddOrdersAndItems.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T18:18:34.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Adress.cs",
+              "DocumentMoniker": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\Adress.cs",
+              "RelativeDocumentMoniker": "OnlineWeb.Server\\Models\\Adress.cs",
+              "ToolTip": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\Adress.cs",
+              "RelativeToolTip": "OnlineWeb.Server\\Models\\Adress.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T18:02:43.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "OnlineWeb.Server\\Models\\Users.cs",
+              "ToolTip": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\Users.cs",
+              "RelativeToolTip": "OnlineWeb.Server\\Models\\Users.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T17:58:13.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "OnlineWeb.Server\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\Product.cs",
+              "RelativeToolTip": "OnlineWeb.Server\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T17:58:01.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "OnlineWeb.Server\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\Order.cs",
+              "RelativeToolTip": "OnlineWeb.Server\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T17:57:15.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\OrderItem.cs",
+              "RelativeDocumentMoniker": "OnlineWeb.Server\\Models\\OrderItem.cs",
+              "ToolTip": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Models\\OrderItem.cs",
+              "RelativeToolTip": "OnlineWeb.Server\\Models\\OrderItem.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T17:55:21.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "OnlineWeb.Server\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\qirox\\source\\repos2\\OnlineWeb\\OnlineWeb.Server\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "OnlineWeb.Server\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAAAD4AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T17:39:49.027Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

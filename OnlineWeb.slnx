@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="onlineweb.client/onlineweb.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="OnlineWeb.Server/OnlineWeb.Server.csproj" />
+</Solution>
