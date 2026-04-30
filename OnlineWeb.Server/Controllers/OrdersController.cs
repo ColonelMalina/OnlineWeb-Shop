@@ -20,7 +20,34 @@ namespace OnlineWeb.Server.Controllers
         {
             _context = context;
         }
-        // TODO: [HttpGet] - for future to have method of getting orders data from server on frontend
+        // Method for getting a list of all orders
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
+        {
+            // We load all orders and use .Include to ensure that
+            // the individual items within the order (OrderItems) are also loaded.
+            return await _context.Orders
+                .Include(o => o.OrderItems)
+                .OrderByDescending(o => o.OrderDate) // sort by date
+                .ToListAsync();
+        }
+
+        // Method for getting details of one specific order
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> GetOrder(int id)
+        {
+            // We will search for the order by ID and repackage the items
+            var order = await _context.Orders
+                .Include(o => o.OrderItems)
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order == null)
+            {
+                return NotFound($"Objednávka s ID {id} nebyla nalezena.");
+            }
+
+            return Ok(order);
+        }
         [HttpPost]
         // async - asynchronous - runs even when waiting for database to respond
         public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
@@ -31,14 +58,26 @@ namespace OnlineWeb.Server.Controllers
                 OrderDate = DateTime.Now,
                 CustomerName = orderDto.CustomerName,
                 Email = orderDto.Email,
-                BillingAddress = orderDto.BillingAddress, 
-                TotalPrice = 0 
+                PhoneNum = orderDto.Phone,
+                // EF Core will take care of storing the Owned entity in the same Orders table
+                BillingAddress = new Address
+                {
+                    Street = orderDto.Address.Street,
+                    HouseNumber = orderDto.Address.HouseNumber,
+                    City = orderDto.Address.City,
+                    ZipCode = orderDto.Address.ZipCode,
+                    Country = orderDto.Address.Country
+                },
+                TotalPrice = 0,
+                OrderItems = new List<OrderItem>()
             };
 
             // Processing products in cart
             foreach (var item in orderDto.Items)
             {
-                var product = await _context.Products.FindAsync(item.ProductId);
+                var product = await _context.Products
+                    .Include(p => p.Stock)
+                    .FirstOrDefaultAsync(p => p.Id == item.ProductId);
                 if (product == null) return BadRequest($"Product with ID {item.ProductId} doesn't exist.");
 
                 // TODO: price check in cart if the price changed in database to let customer know that the price is different then when added to the cart
@@ -48,7 +87,7 @@ namespace OnlineWeb.Server.Controllers
                 {
                     ProductId = product.Id,
                     Quantity = item.Quantity,
-                    PriceAtPurchase = product.Price 
+                    PriceAtPurchase = product.Price
                 };
                 // calculating final price
                 order.OrderItems.Add(orderItem);
@@ -79,21 +118,5 @@ namespace OnlineWeb.Server.Controllers
 
             return Ok(order);
         }
-    }
-    // DTO - Data Transfer Object
-    // Helping class for data from React
-    public class OrderDto
-    {
-        public string CustomerName { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public Address BillingAddress { get; set; } = new();
-        public List<CartItemDto> Items { get; set; } = new();
-    }
-
-    public class CartItemDto
-    {
-        public int ProductId { get; set; }
-        public int Quantity { get; set; }
-        public string Size { get; set; }
     }
 }

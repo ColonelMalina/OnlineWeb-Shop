@@ -8,6 +8,16 @@ export interface CartItem {
     size: Size;
 }
 
+// DTO pro data z checkout formuláře
+export interface CheckoutData {
+    customerName: string;
+    email: string;
+    street: string;
+    houseNumber: string;
+    city: string;
+    zipCode: string;
+}
+
 // define which functions and data can our cart give to other sites
 interface CartContextType {
     cartItems: CartItem[];
@@ -15,6 +25,7 @@ interface CartContextType {
     decreaseQuantity: (productId: number, size: Size) => void;
     clearCart: () => void;
     totalPrice: number;
+    checkout: (customerData: CheckoutData) => Promise<void>; // Getting data from form
 }
 
 // declaring new Context
@@ -28,16 +39,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     // method for adding stuff to the cart
     const addToCart = (product: Product, size: Size) => {
         setCartItems(prevItems => {
-            const existingItem = prevItems.find(item => item.product.id === product.id);
+            const existingItem = prevItems.find(item => item.product.id === product.id && item.size === size);
             if (existingItem) {
                 // if the item is there +=
                 return prevItems.map(item => (item.product.id === product.id && item.size === size)
-                        ? { ...item, quantity: item.quantity + 1 }
-                        : item
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
                 );
             }
             // if not we just add it once
-            return [...prevItems, { product, quantity: 1, size}];
+            return [...prevItems, { product, quantity: 1, size }];
         });
     };
 
@@ -45,25 +56,67 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         setCartItems(prevItems => {
             const existingItem = prevItems.find(item => item.product.id === productId && item.size === size);
 
-            // Pokud je v košíku už jen 1 kus a uživatel klikne na mínus, produkt úplně vymažeme
+            // if there is only 1 item left in the cart and the user clicks the minus, we will delete the product completely
             if (existingItem?.quantity === 1) {
                 return prevItems.filter(item => !(item.product.id === productId && item.size === size));
             }
 
-            // Jinak jen snížíme množství o 1
+            // else we lower the quantity by 1
             return prevItems.map(item => (item.product.id === productId && item.size === size)
-                    ? { ...item, quantity: item.quantity - 1 }
-                    : item );
+                ? { ...item, quantity: item.quantity - 1 }
+                : item);
         });
     };
+
     // clearing the cart after getting order to database
     const clearCart = () => setCartItems([]);
 
-    // 
+    // Logic for sending order to backend
+    const checkout = async (customerData: CheckoutData) => {
+        // mapping data from cart and form to format for OrdersController
+        const orderDto = {
+            customerName: customerData.customerName,
+            email: customerData.email,
+            address: { // Tady to musí odpovídat tvé třídě Address v C#
+                street: customerData.street,
+                houseNumber: customerData.houseNumber,
+                city: customerData.city,
+                zipCode: customerData.zipCode,
+                country: "Česká republika"
+            },
+            items: cartItems.map(item => ({
+                productId: item.product.id,
+                quantity: item.quantity,
+                size: item.size
+            }))
+        };
+
+        try {
+            const response = await fetch('https://localhost:7019/api/Orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderDto)
+            });
+
+            if (response.ok) {
+                alert("Objednávka byla úspěšně vytvořena!");
+                clearCart(); // clearing the cart after success 
+            } else {
+                const errorText = await response.text();
+                alert("Chyba při objednávce: " + errorText);
+            }
+        } catch (error) {
+            console.error("Chyba při komunikaci se serverem:", error);
+            alert("Nepodařilo se spojit se serverem.");
+        }
+    };
+
     const totalPrice = cartItems.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, decreaseQuantity, clearCart, totalPrice }}>
+        <CartContext.Provider value={{ cartItems, addToCart, decreaseQuantity, clearCart, totalPrice, checkout }}>
             {children}
         </CartContext.Provider>
     );

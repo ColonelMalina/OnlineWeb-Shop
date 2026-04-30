@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage';
 import { Cart } from './pages/Cart';
 import { Checkout } from './pages/Checkout';
 import { CartProvider } from './context/CartContext';
+import { ProductPage } from './pages/ProductPage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/košík" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
+                <Route path="/product/:id" element={<ProductPage />} />
             </Routes>
             
         </div>
