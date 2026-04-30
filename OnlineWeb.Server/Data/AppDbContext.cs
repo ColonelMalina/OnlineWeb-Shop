@@ -10,5 +10,7 @@ namespace OnlineWeb.Server.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<ProductStock> ProductStocks { get; set; }
+
     }
 }

@@ -28,11 +28,11 @@ export const HomePage = () => {
         fetchProducts();
     }, []); // empty brackets on end mean "start only one time" 
 
-    // function that is added to the card
-    const handleAddToCart = (product: Product) => {
-        console.log("Přidávám do košíku:", product.name);
-        alert(`Produkt ${product.name} přidán! (Zatím jen na zkoušku)`);
-    };
+    //// function that is added to the card
+    //const handleAddToCart = (product: Product) => {
+    //    console.log("Přidávám do košíku:", product.name);
+    //    alert(`Produkt ${product.name} přidán! (Zatím jen na zkoušku)`);
+    //};
 
     // for loading or showing errors 
     if (isLoading) return <p>Načítám produkty...</p>;
@@ -51,8 +51,7 @@ export const HomePage = () => {
                 {products.map((product) => (
                     <ProductCard
                         key={product.id}
-                        product={product}
-                        onAddToCart={handleAddToCart}
+                        product={product}   
                     />
                 ))}
             </div>  

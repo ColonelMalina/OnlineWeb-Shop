@@ -54,14 +54,22 @@ namespace OnlineWeb.Server.Controllers
                 order.OrderItems.Add(orderItem);
                 order.TotalPrice += orderItem.PriceAtPurchase * orderItem.Quantity;
 
+                var specificStock = product.Stock.FirstOrDefault(s => s.Size == item.Size);
                 // Lowering quantity of items
-                if (product.Quantity < item.Quantity)
+                if (specificStock == null)
                 {
-                    return BadRequest($"Bohužel, produkt {product.Name} už není v tomto množství na skladě. Zbývá: {product.Quantity}ks.");
+                    return BadRequest($"Bohužel, produkt {product.Name} ve velikosti {item.Size} neexistuje.");
+                }
+
+                // 3. Kontrola dostupného množství pro danou velikost
+                if (specificStock.Quantity < item.Quantity)
+                {
+                    return BadRequest($"Bohužel, produkt {product.Name} (Velikost: {item.Size}) už není v tomto množství na skladě. Zbývá: {specificStock.Quantity} ks.");
                 }
                 else
                 {
-                    product.Quantity -= item.Quantity;
+                    // 4. Snížení množství POUZE u dané velikosti
+                    specificStock.Quantity -= item.Quantity;
                 }
             }
 
@@ -86,5 +94,6 @@ namespace OnlineWeb.Server.Controllers
     {
         public int ProductId { get; set; }
         public int Quantity { get; set; }
+        public string Size { get; set; }
     }
 }

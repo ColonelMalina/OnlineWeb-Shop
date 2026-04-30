@@ -1,13 +1,17 @@
 // these models need to be same as our models in C#
 
 // export interface User - for future// 
+export type Size = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+export interface ProductStock {
+    size: Size;
+    quantity: number;
+}
 export interface Product {
     id: number;
     name: string;
     description: string;
     price: number;
-    quantity: number;
-    size: string;
+    stock: ProductStock[];
 }
 
 export interface Address {

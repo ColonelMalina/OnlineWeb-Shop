@@ -1,31 +1,38 @@
 import { ProductInCart } from '../components/ProductInCart';
-import type { Product } from '../models/types';
+import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 
 export const Cart = () => {
     const navigate = useNavigate();
-    // TESTOVACÍ DATA: Brzy je nahradíme skutečnými daty z paměti aplikace
-    const dummyProduct: Product = {
-        id: 99,
-        name: "Testovací Super Produkt",
-        description: "Jen pro ukázku vzhledu",
-        price: 500,
-        quantity: 10,
-        size : "L"
-    };
+    // getting data from memory
+    const { cartItems, totalPrice } = useCart();
     // DRAWING
     return (
         <div>  
             <h2>Můj košík</h2>
 
             <div style={{ backgroundColor: '#f9f9f9', padding: '20px', borderRadius: '8px' }}>
-                {/* Zde později použijeme funkci map() pro všechny produkty */}
-                <ProductInCart product={dummyProduct} cartQuantity={2} />
+                {cartItems.length === 0 ? (
+                    <p style={{ textAlign: 'center', color: '#666', padding: '20px 0' }}>
+                        Tvůj košík je zatím prázdný.
+                    </p>
+                ) : (
+                    // if cart is not empty go through the items and draw
+                    cartItems.map((item) => (
+                        <ProductInCart
+                            key={item.product.id}
+                            product={item.product}
+                            cartQuantity={item.quantity}
+                            size={item.size}
+                        />
+                    ))
+                )}
 
                 <div style={{ textAlign: 'right', marginTop: '20px' }}>
-                    <h3>Celkem k úhradě: {dummyProduct.price * 2} Kč</h3>
+                    <h3>Celkem k úhradě: {totalPrice}  Kč</h3>
                     <button
                         onClick={() => navigate('/checkout')}
+                        disabled={cartItems.length === 0}
                         style={{
                         padding: '10px 20px',
                         backgroundColor: '#28a745',

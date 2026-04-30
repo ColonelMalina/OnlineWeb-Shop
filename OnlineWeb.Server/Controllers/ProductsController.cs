@@ -11,7 +11,7 @@ namespace OnlineWeb.Server.Controllers
     {
         private readonly AppDbContext _context;
 
-        // V konstruktoru si vyžádáme náš databázový kontext
+        //  In the constructor we request our database context
         public ProductsController(AppDbContext context)
         {
             _context = context;

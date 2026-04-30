@@ -2,11 +2,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { Cart } from './pages/Cart';
 import { Checkout } from './pages/Checkout';
+import { CartProvider } from './context/CartContext';
 
 function App() {
   return (
-    // whole app needs to be in Router
-    <Router>
+      // whole app needs to be in Router
+  <CartProvider>
+     <Router>
           <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
             
             {/* MAIN NAVIGATION */}
@@ -28,7 +30,8 @@ function App() {
             </Routes>
             
         </div>
-    </Router>
+     </Router>
+  </CartProvider>
   );
 }
 
