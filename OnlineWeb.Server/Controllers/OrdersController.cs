@@ -7,7 +7,10 @@ using OnlineWeb.Server.Models;
 
 namespace OnlineWeb.Server.Controllers
 {
+    // ATTRIBUTES
+    // attribute controlling on which adress this controller works
     [Route("api/[controller]")]
+    // attribute that makes this controller better for API handling
     [ApiController]
     public class OrdersController : ControllerBase
     {
@@ -17,8 +20,9 @@ namespace OnlineWeb.Server.Controllers
         {
             _context = context;
         }
-
+        // TODO: [HttpGet] - for future to have method of getting orders data from server on frontend
         [HttpPost]
+        // async - asynchronous - runs even when waiting for database to respond
         public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
         {
             // Making instance of order
@@ -37,6 +41,8 @@ namespace OnlineWeb.Server.Controllers
                 var product = await _context.Products.FindAsync(item.ProductId);
                 if (product == null) return BadRequest($"Product with ID {item.ProductId} doesn't exist.");
 
+                // TODO: price check in cart if the price changed in database to let customer know that the price is different then when added to the cart
+
                 // Making item of order and freezing price
                 var orderItem = new OrderItem
                 {
@@ -44,12 +50,19 @@ namespace OnlineWeb.Server.Controllers
                     Quantity = item.Quantity,
                     PriceAtPurchase = product.Price 
                 };
-
+                // calculating final price
                 order.OrderItems.Add(orderItem);
                 order.TotalPrice += orderItem.PriceAtPurchase * orderItem.Quantity;
 
                 // Lowering quantity of items
-                product.Quantity -= item.Quantity;
+                if (product.Quantity < item.Quantity)
+                {
+                    return BadRequest($"Bohužel, produkt {product.Name} už není v tomto množství na skladě. Zbývá: {product.Quantity}ks.");
+                }
+                else
+                {
+                    product.Quantity -= item.Quantity;
+                }
             }
 
             // saving everything to DB together
@@ -59,7 +72,7 @@ namespace OnlineWeb.Server.Controllers
             return Ok(order);
         }
     }
-
+    // DTO - Data Transfer Object
     // Helping class for data from React
     public class OrderDto
     {

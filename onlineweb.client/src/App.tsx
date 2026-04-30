@@ -1,58 +1,35 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-
-interface Forecast {
-    date: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
-}
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HomePage } from './pages/HomePage';
+import { Cart } from './pages/Cart';
+import { Checkout } from './pages/Checkout';
 
 function App() {
-    const [forecasts, setForecasts] = useState<Forecast[]>();
+  return (
+    // whole app needs to be in Router
+    <Router>
+          <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+            
+            {/* MAIN NAVIGATION */}
+              <div style={{ justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #333', paddingBottom: '10px', marginBottom: '20px' }}>
+                <h1 style={{ margin: 0 }}>E-shop 🚀</h1>
+                
+                  <nav style={{ display: 'flex', justifyContent: 'flex-end', gap: '20px' }}>
+                    {/* from router-dom library to make routing between sites */}
+                    <Link to="/" style={{ textDecoration: 'none', color: '#007BFF', fontWeight: 'bold' }}>Nabídka</Link>
+                    <Link to="/košík" style={{ textDecoration: 'none', color: '#007BFF', fontWeight: 'bold' }}>Košík</Link>
+                </nav>
+            </div>
 
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
-
-    return (
-        <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+              {/* from router-dom library to make routing between sites */}
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/košík" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+            </Routes>
+            
         </div>
-    );
-
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        if (response.ok) {
-            const data = await response.json();
-            setForecasts(data);
-        }
-    }
+    </Router>
+  );
 }
 
 export default App;

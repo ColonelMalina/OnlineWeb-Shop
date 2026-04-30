@@ -11,6 +11,17 @@ builder.Services.AddSwaggerGen();
 // calling for database                                 // calling for adress in appsettings.json
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// CORS (Cross-Origin Resource Sharing
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowMyFrontend", policy =>
+    {
+        // We can add more adresses by using ","
+        policy.WithOrigins("https://localhost:55268", "https://localhost:5173")
+              .AllowAnyMethod()   // Allowing GET, POST, PUT, DELETE atd.
+              .AllowAnyHeader();  // Allowing sending any headers 
+    });
+});
 var app = builder.Build();
 
 // for sending files to frontend 
@@ -27,6 +38,7 @@ if (app.Environment.IsDevelopment())
 // to secure connection from http to https
 app.UseHttpsRedirection();
 
+app.UseCors("AllowMyFrontend");
 // for future authorization of users
 app.UseAuthorization();
 
