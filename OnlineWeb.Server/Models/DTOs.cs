@@ -8,7 +8,7 @@ public class OrderDto
 {
     public string CustomerName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public int Phone { get; set; }
+    public string Phone { get; set; } = string.Empty;
     public Address Address { get; set; } = new Address();
     public List<CartItemDto> Items { get; set; } = new();
 }

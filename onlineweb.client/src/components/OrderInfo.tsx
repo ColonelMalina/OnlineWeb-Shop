@@ -13,7 +13,7 @@ interface OrderInfoProps {
     };
     onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-
+// DRAWING
 export const OrderInfo = ({ formData, onInputChange }: OrderInfoProps) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', textAlign: 'left' }}>
@@ -37,7 +37,7 @@ export const OrderInfo = ({ formData, onInputChange }: OrderInfoProps) => {
                 onChange={onInputChange}
             />
             <input
-                name="telefon"
+                name="phone"
                 type="telefon"
                 placeholder="Telefoní číslo"
                 style={inputStyle}

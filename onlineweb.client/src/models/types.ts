@@ -30,6 +30,7 @@ export interface CartItemDto {
 export interface OrderDto {
     customerName: string;
     email: string;
+    phone: string,
     billingAddress: Address;
     items: CartItemDto[];
 }

@@ -6,15 +6,14 @@ import { useCart } from '../context/CartContext';
 export const Checkout = () => {
     const { cartItems, checkout } = useCart();
 
-    // 1. ROZŠÍŘENÝ STAV: Odpovídá tvé C# třídě Address
     const [customerData, setCustomerData] = useState({
         customerName: '',
         email: '',
         phone: '',
-        street: '',      // Ulice
-        houseNumber: '', // Číslo popisné
-        city: '',        // Město
-        zipCode: ''      // PSČ
+        street: '',     
+        houseNumber: '', 
+        city: '',        
+        zipCode: ''      
     });
 
     // Funkce pro aktualizaci dat (zůstává stejná, díky 'name' v inputech)

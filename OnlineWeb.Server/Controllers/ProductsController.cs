@@ -17,7 +17,7 @@ namespace OnlineWeb.Server.Controllers
         }
 
 
-        // --- ENDPOINTY ---
+        // ENDPOINTS 
 
         // GET: api/Products
         [HttpGet]

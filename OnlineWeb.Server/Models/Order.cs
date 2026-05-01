@@ -15,7 +15,7 @@ namespace OnlineWeb.Server.Models
         [Required]
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
-        public double PhoneNum { get; set; }
+        public string PhoneNum { get; set; } = string.Empty;
 
         // can be added later 
         // public Address ShippingAddress { get; set; } = new Address();

@@ -8,10 +8,11 @@ export interface CartItem {
     size: Size;
 }
 
-// DTO pro data z checkout formuláře
+// DTO for data from checkout page
 export interface CheckoutData {
     customerName: string;
     email: string;
+    phone: string;
     street: string;
     houseNumber: string;
     city: string;
@@ -77,7 +78,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         const orderDto = {
             customerName: customerData.customerName,
             email: customerData.email,
-            address: { // Tady to musí odpovídat tvé třídě Address v C#
+            phone: customerData.phone,
+            address: { 
                 street: customerData.street,
                 houseNumber: customerData.houseNumber,
                 city: customerData.city,
