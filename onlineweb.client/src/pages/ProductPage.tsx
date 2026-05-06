@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import type { Product, Size, ProductStock } from '../models/types';
-
+import { toast } from "sonner"
 export const ProductPage = () => {
     // Getting ID from URL
     const { id } = useParams<{ id: string }>();
@@ -35,7 +35,11 @@ export const ProductPage = () => {
     // controlling that the item of that size is in stock
     const currentStock = product.stock.find(s => s.size === selectedSize);
     const canAdd = currentStock && currentStock.quantity > 0;
+    const handleClick = () => {
+        toast.success("Produkt byl pridan do kosiku!");
+        addToCart(product, selectedSize);
 
+    }
     return (
         <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
             <h1>{product.name}</h1>
@@ -65,7 +69,7 @@ export const ProductPage = () => {
             </div>
 
             <button
-                onClick={() => selectedSize && addToCart(product, selectedSize)}
+                onClick={() => handleClick()}
                 disabled={!canAdd}
                 style={{
                     padding: '15px 30px',

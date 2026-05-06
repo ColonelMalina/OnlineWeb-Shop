@@ -7,7 +7,7 @@ export const apiService = {
     // funtion
     getProducts: async (): Promise<Product[]> => {
         try {
-            // Pošleme požadavek na náš ProductsController
+            // sending request to ProductsController
             const response = await fetch(`${API_BASE_URL}/Products`);
 
             // If server send error, call this exception

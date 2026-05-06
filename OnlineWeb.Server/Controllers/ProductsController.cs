@@ -23,7 +23,7 @@ namespace OnlineWeb.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            // Include zajistí, že se z databáze načtou i data o velikostech (Stock)
+            // Include ensures that database loads data about size
             return await _context.Products.Include(p => p.Stock).ToListAsync();
         }
 
@@ -43,7 +43,7 @@ namespace OnlineWeb.Server.Controllers
         }
 
         // POST: api/Products
-        // Tato metoda vytvoří produkt i jeho skladové zásoby najednou
+        // method for making product and his stock together
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct([FromBody] ProductCreateDto newProductDto)
         {
@@ -52,13 +52,13 @@ namespace OnlineWeb.Server.Controllers
                 return BadRequest("Data produktu chybí.");
             }
 
-            // Mapování z DTO na databázový model
+            // mapping dto to data model
             var product = new Product
             {
                 Name = newProductDto.Name,
                 Description = newProductDto.Description,
                 Price = newProductDto.Price,
-                // Pro každou položku v DTO seznamu vytvoříme nový ProductStock
+                // for every item in dto make new ProductStock
                 Stock = newProductDto.Stock.Select(s => new ProductStock
                 {
                     Size = s.Size,
@@ -69,7 +69,7 @@ namespace OnlineWeb.Server.Controllers
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            // Vrátíme nově vytvořený produkt (včetně jeho Id, které přidělilo SQL)
+            // return new product with ID
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
         }
     }

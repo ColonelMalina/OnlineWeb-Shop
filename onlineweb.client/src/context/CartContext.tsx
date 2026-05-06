@@ -51,6 +51,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             // if not we just add it once
             return [...prevItems, { product, quantity: 1, size }];
         });
+        // ADD TEMPORARY POP UP 
     };
 
     const decreaseQuantity = (productId: number, size: Size) => {

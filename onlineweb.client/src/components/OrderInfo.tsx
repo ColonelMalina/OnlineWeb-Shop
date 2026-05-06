@@ -1,14 +1,13 @@
 import React from 'react';
 
-// 1. DOKUMENTACE: Interface musí přesně odpovídat stavu v Checkout.tsx
 interface OrderInfoProps {
     formData: {
         customerName: string;
         email: string;
-        street: string;      // Změněno z 'address' na 'street'
-        houseNumber: string; // Přidáno nové pole
+        street: string;   
+        houseNumber: string; 
         city: string;
-        zipCode: string; // Sjednoceno na 'zipCode' podle backendu
+        zipCode: string; 
         phone: string;
     };
     onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -38,14 +37,12 @@ export const OrderInfo = ({ formData, onInputChange }: OrderInfoProps) => {
             />
             <input
                 name="phone"
-                type="telefon"
+                type="tel"
                 placeholder="Telefoní číslo"
                 style={inputStyle}
                 value={formData.phone}
                 onChange={onInputChange}
             />
-
-            {/* 2. IMPLEMENTACE: Rozdělení adresy na Street a HouseNumber */}
             <div style={{ display: 'flex', gap: '10px' }}>
                 <input
                     name="street"

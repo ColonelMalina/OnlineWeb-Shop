@@ -1,7 +1,8 @@
-import { useState } from 'react'; // 1. IMPORT: Přidáme useState pro pamatování velikosti
+import { useState } from 'react'; 
 import { useCart } from '../context/CartContext';
-import type { Product, Size } from '../models/types'; // Přidán import Size
+import type { Product, Size } from '../models/types'; 
 import { Link } from 'react-router-dom';
+import { toast } from "sonner"
 interface ProductCardProps {
     product: Product;
 }
@@ -18,7 +19,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     // Helping variable - we find out how many pieces the currently selected size has
     const currentStockEntry = product.stock.find(s => s.size === selectedSize);
     const isOutOfStock = !currentStockEntry || currentStockEntry.quantity <= 0;
+    const handleClick = () => {
+        toast.success("Produkt byl pridan do kosiku!");
+        addToCart(product, selectedSize);
 
+    }
     // DRAWING
     return (
         <div style={{
@@ -50,7 +55,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                         <option
                             key={item.size}
                             value={item.size}
-                            disabled={item.quantity <= 0} // prevents selection of out-of-stock sizes in gray state
+                            disabled={item.quantity <= 0} // prevents selection of outofstock sizes in gray state
                         >
                             {item.size} {item.quantity <= 0 ? '(Vyprodáno)' : `(${item.quantity} ks)`}
                         </option>
@@ -58,9 +63,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                 </select>
             </div>
 
-            {/*FIXED BUTTON: We now ship the product AND the selected size AT THE SAME TIME*/}
             <button
-                onClick={() => addToCart(product, selectedSize)}
+                onClick={() => handleClick()}
                 disabled={isOutOfStock} // button is off if not available
                 style={{
                     padding: '10px',

@@ -19,13 +19,13 @@ export const ProductInCart = ({ product, cartQuantity, size }: ProductInCartProp
             borderBottom: '1px solid #ccc',
             padding: '15px 0'
         }}>
-            {/* Levá část: Název a cena za kus */}
+            {/* name and price on left */}
             <div style={{ flex: 1 }}>
                 <h4 style={{ margin: '0 0 5px 0' }}>{product.name}</h4>
                 <p style={{ margin: 0, color: '#666', fontSize: '0.9em' }}>{product.price} Kč / ks</p>
             </div>
 
-            {/* Střední část: Ovládání množství */}
+            {/* handle amount in centre */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginRight: '20px' }}>
                 <button
                     onClick={() => decreaseQuantity(product.id, size)}
@@ -49,7 +49,7 @@ export const ProductInCart = ({ product, cartQuantity, size }: ProductInCartProp
                 </button>
             </div>
 
-            {/* Pravá část: Celková cena za tuto položku */}
+            {/* total price on right side */}
             <div style={{ fontWeight: 'bold', fontSize: '1.1em', width: '100px', textAlign: 'right' }}>
                 {product.price * cartQuantity} Kč
             </div>
@@ -57,7 +57,7 @@ export const ProductInCart = ({ product, cartQuantity, size }: ProductInCartProp
     );
 };
 
-// Pomocný styl pro tlačítka, abychom ho nemuseli psát dvakrát
+// Button
 const buttonStyle = {
     padding: '5px 12px',
     backgroundColor: '#007BFF',

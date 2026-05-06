@@ -100,14 +100,13 @@ namespace OnlineWeb.Server.Controllers
                     return BadRequest($"Bohužel, produkt {product.Name} ve velikosti {item.Size} neexistuje.");
                 }
 
-                // 3. Kontrola dostupného množství pro danou velikost
+                //Control for which size is in stock 
                 if (specificStock.Quantity < item.Quantity)
                 {
                     return BadRequest($"Bohužel, produkt {product.Name} (Velikost: {item.Size}) už není v tomto množství na skladě. Zbývá: {specificStock.Quantity} ks.");
                 }
                 else
                 {
-                    // 4. Snížení množství POUZE u dané velikosti
                     specificStock.Quantity -= item.Quantity;
                 }
             }

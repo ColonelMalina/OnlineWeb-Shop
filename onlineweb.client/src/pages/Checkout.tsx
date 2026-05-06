@@ -16,20 +16,16 @@ export const Checkout = () => {
         zipCode: ''      
     });
 
-    // Funkce pro aktualizaci dat (zůstává stejná, díky 'name' v inputech)
+    // function for updating data
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setCustomerData(prev => ({ ...prev, [name]: value }));
     };
 
-    // 2. LOGIKA ODESLÁNÍ: Teď kontrolujeme všechna pole adresy
+    // Check all address fields
     const handleOrderSubmit = async () => {
-        if (cartItems.length === 0) {
-            alert("Košík je prázdný!");
-            return;
-        }
 
-        // Validace všech polí
+        // validation of field
         const isFormValid = Object.values(customerData).every(value => value.trim() !== '');
 
         if (!isFormValid) {
@@ -37,14 +33,14 @@ export const Checkout = () => {
             return;
         }
 
-        // 3. VOLÁNÍ CHECKOUT: Předáme objekt se všemi daty
-        // CartContext si z toho pak vytvoří ten správný objekt pro backend
+        //checkout call: Pass an object with all the data
+        //cartContext then creates the correct object for the backend
         await checkout(customerData);
     };
 
     return (
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '40px', marginTop: '20px' }}>
-            {/* Předáváme rozšířený stav do OrderInfo */}
+            {/* adding data to orderinfo */}
             <OrderInfo formData={customerData} onInputChange={handleInputChange} />
 
             <div>
